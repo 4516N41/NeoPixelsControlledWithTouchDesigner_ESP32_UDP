@@ -15,7 +15,7 @@ word columns = 0;
 #define PIN        4 
 #define NUMPIXELS 64 /
 
-//Comment the 3 lines below out if you want to use DHCP
+//Comment the 3 lines below out if you want to use DHCP(see setup)
 IPAddress ip(192, 168, 1, 57);
 IPAddress gateway(192, 168, 1, 1);
 IPAddress subnet(255, 255, 255, 0);
@@ -43,7 +43,7 @@ void setup()
   Serial.begin(115200);
   pixels.begin();
   WiFi.setSleep(false);
-  WiFi.config(ip, gateway, subnet); 
+  WiFi.config(ip, gateway, subnet); //Also need to comment this line out if you want to use DHCP
   for(int u=0; u<NUMPIXELS; u++)
   {
     testOff(u);
