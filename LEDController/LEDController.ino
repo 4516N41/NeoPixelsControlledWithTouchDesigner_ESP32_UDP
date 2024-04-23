@@ -10,18 +10,19 @@ int green = 100;
 int blue = 100;
 int iterate = 0;
 int oneChar = 8;
-#define rows  8 //number of rows on the LED matrix, there is no need so far to keep track of number of columns since the pixel iteration takes care of that
+#define rows  8 
 word columns = 0;
-#define PIN        4 // On Trinket or Gemma, suggest changing this to 1
-#define NUMPIXELS 64 // Number of pixels on the matrix
+#define PIN        4 
+#define NUMPIXELS 64 /
 
+//Comment the 3 lines below out if you want to use DHCP
 IPAddress ip(192, 168, 1, 57);
 IPAddress gateway(192, 168, 1, 1);
 IPAddress subnet(255, 255, 255, 0);
 
 
-Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-//Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRBW + NEO_KHZ800);
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800); //if you are using RGB
+//Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRBW + NEO_KHZ800); //if you are using RGBW
 
 
 void testOn(int i, int RED, int GREEN, int BLUE)
@@ -34,13 +35,13 @@ void testOff(int i)
 {
   if(NUMPIXELS == 64){pixels.setPixelColor(i, pixels.Color(0, 0, 0));}
   if(NUMPIXELS == 256){pixels.setPixelColor(i, pixels.Color(0, 0, 0, 0));}
-  pixels.show();   // Send the updated pixel colors to the hardware.
+  pixels.show(); 
 }
 
 void setup()
 {
   Serial.begin(115200);
-  pixels.begin(); // INITIALIZE NeoPixel strip object (REQUIRED)
+  pixels.begin();
   WiFi.setSleep(false);
   WiFi.config(ip, gateway, subnet); 
   for(int u=0; u<NUMPIXELS; u++)
