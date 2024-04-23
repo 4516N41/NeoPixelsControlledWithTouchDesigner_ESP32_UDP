@@ -49,8 +49,7 @@ void setup()
   }
 
   WiFi.mode(WIFI_STA);
- //WiFi.begin("OPNet", "HydrogenMaser78");
-  WiFi.begin("Vodafone_4FBEB_EXT", "5DCUAXNZKS");
+  WiFi.begin("SSID", "Password");
   if(WiFi.waitForConnectResult() != WL_CONNECTED) {
     Serial.println("WiFi Failed");
     while(1) 
