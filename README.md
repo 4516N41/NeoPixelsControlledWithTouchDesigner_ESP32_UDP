@@ -10,6 +10,6 @@
 5. set your ESP32 IP in the OSC out1 module as Network Address
 6. set the number of rows your LED matrix has in the numPixels1 module constants, or the squareroot of the number of LEDs your strip has
 
-The speed of UDP messages is controlled by the LFO module(frequency) 
+**The speed of UDP messages is controlled by the LFO module(frequency)** 
 
 Enjoy.
