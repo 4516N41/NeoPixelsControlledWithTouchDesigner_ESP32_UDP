@@ -10,10 +10,10 @@ int green = 100;
 int blue = 100;
 int iterate = 0;
 int oneChar = 8;
-#define rows  8 
+#define rows  12//change this depending on the number of rows your LED matrix has or the squareroot of the number of LEDs you have on your strip 
 word columns = 0;
 #define PIN        4 
-#define NUMPIXELS 64 /
+#define NUMPIXELS 144//the amount of LEDs your matrix or strip has
 
 //Comment the 3 lines below out if you want to use DHCP(see setup)
 IPAddress ip(192, 168, 1, 57);
@@ -27,14 +27,14 @@ Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800); //if you are usi
 
 void testOn(int i, int RED, int GREEN, int BLUE)
 {
-  if(NUMPIXELS == 64){pixels.setPixelColor(i, pixels.Color(RED, GREEN, BLUE));}
-  if(NUMPIXELS == 256){pixels.setPixelColor(i, pixels.Color(RED, GREEN, BLUE, 0));}
+  pixels.setPixelColor(i, pixels.Color(RED, GREEN, BLUE));//for RGB
+  //pixels.setPixelColor(i, pixels.Color(RED, GREEN, BLUE, 0));// for RGBW
 }
 
 void testOff(int i)
 {
-  if(NUMPIXELS == 64){pixels.setPixelColor(i, pixels.Color(0, 0, 0));}
-  if(NUMPIXELS == 256){pixels.setPixelColor(i, pixels.Color(0, 0, 0, 0));}
+  pixels.setPixelColor(i, pixels.Color(0, 0, 0));//for RGB
+  //pixels.setPixelColor(i, pixels.Color(0, 0, 0, 0));//for RGBW
   pixels.show(); 
 }
 
@@ -50,7 +50,7 @@ void setup()
   }
 
   WiFi.mode(WIFI_STA);
-  WiFi.begin("SSID", "Password");
+  WiFi.begin("SSID", "Password");//put the name of your network here and password
   if(WiFi.waitForConnectResult() != WL_CONNECTED) {
     Serial.println("WiFi Failed");
     while(1) 
@@ -65,8 +65,7 @@ void setup()
     
     udp.onPacket([](AsyncUDPPacket packet) 
     {
-     // Serial.println(packet.length());
-     if(packet.length() == 88){columns = 0; position = 0;}
+     // Serial.println(packet.length());//for debugging purposes
       oneChar = 8;
       for(int i=0; i<rows; i++)
       {  
