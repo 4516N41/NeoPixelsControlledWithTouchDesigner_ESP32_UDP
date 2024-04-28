@@ -9,7 +9,8 @@
 
 5. set your ESP32 IP in the OSC out1 module as Network Address
 6. set the number of rows your LED matrix has in the numPixels1 module constants, or the squareroot of the number of LEDs your strip has
-7. Change the number in line 12 of "chopexec3" according to the number of columns you have(or the squareroot of number of LEDs you strip has)
+7. Change the number in line 12 of "chopexec3" according to the number of columns you have(or the squareroot of number of LEDs).
+
 **The speed of UDP messages is controlled by the LFO module(frequency)** 
 
 Enjoy.
